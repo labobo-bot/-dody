@@ -1,36 +1,46 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="google-site-verification" content="ZBYc4l75nJRwf_WPoSWxUHR4bNZDoHVXgh7ijLGdxsQ" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-    <!-- معلومات الموقع - SEO -->
-    <title>تطبيق دودي - Dody App | شات العضويات الموثقة</title>
-    <meta name="description" content="تطبيق دودي هو المنصة الرسمية لدردشة المطور دودي وشراء العضويات الذهبية الموثقة. انضم الآن لأكبر مجتمع تقني." />
-    <meta name="keywords" content="دودي, dody, شات, دردشة, عضوية ذهبية, توثيق حسابات" />
-    <meta name="author" content="Dody Developer" />
-    <link rel="canonical" href="./" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="./" />
-    <meta property="og:title" content="تطبيق دودي - Dody App | شات العضويات الموثقة" />
-    <meta property="og:description" content="المنصة الرسمية لدردشة المطور دودي وشراء العضويات الذهبية الموثقة." />
-    <meta property="og:image" content="./og-image.png" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="./" />
-    <meta property="twitter:title" content="تطبيق دودي - Dody App" />
-    <meta property="twitter:description" content="دردشة المطور دودي الرسمية." />
-    <meta property="twitter:image" content="./og-image.png" />
-
-    <!-- أيقونات وروابط أخرى -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="sMe9o4ndrTx6bFdakgRATCmT9e8IM5l1mKq9bZbx1xE" />
+    <title>Dody App</title>
+    <script src="https://unpkg.com"></script>
+    <script src="https://unpkg.com"></script>
+    <script src="https://unpkg.com"></script>
+    <style>
+        body { background-color: #0f172a; color: white; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
+        .card { background: #1e293b; border-radius: 15px; padding: 20px; max-width: 500px; margin: 20px auto; box-shadow: 0 10px 15px rgba(0,0,0,0.3); }
+        .chat-box { height: 250px; background: #0f172a; border-radius: 10px; padding: 10px; overflow-y: auto; margin-bottom: 15px; border: 1px solid #334155; }
+        input { width: 70%; padding: 12px; border-radius: 8px; border: none; background: #334155; color: white; }
+        .btn-main { background: #fbbf24; color: #0f172a; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .btn-sub { background: #334155; color: white; border: 1px solid #fbbf24; padding: 8px 15px; border-radius: 20px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <script type="text/babel">
+        function App() {
+            const [role, setRole] = React.useState('User');
+            return (
+                <div>
+                    <h1>👑 Dody App</h1>
+                    <div className="card">
+                        <p>Role: <span style={{color: '#fbbf24', fontWeight: 'bold'}}>{role}</span></p>
+                        <div className="chat-box"><p style={{color: '#64748b', marginTop: '100px'}}>No messages yet...</p></div>
+                        <input type="text" placeholder="Message..." />
+                        <button className="btn-main">Send</button>
+                    </div>
+                    <div style={{marginTop: '20px'}}>
+                        <button className="btn-sub" onClick={() => setRole('Star 🌟')}>Star</button>
+                        <button className="btn-sub" onClick={() => setRole('VIP ✨')}>VIP</button>
+                    </div>
+                    <p style={{fontSize: '10px', color: '#475569', marginTop: '30px'}}>Verified Property ✅</p>
+                </div>
+            );
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
 </html>
