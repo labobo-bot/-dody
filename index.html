@@ -5,43 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="sMe9o4ndrTx6bFdakgRATCmT9e8IM5l1mKq9bZbx1xE" />
     <title>Dody App</title>
-    <!-- Fixed and Completed React Libraries -->
-    <script src="unpkg.com"></script>
-    <script src="unpkg.com"></script>
-    <script src="unpkg.com"></script>
     <style>
         body { background-color: #0f172a; color: white; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
         .card { background: #1e293b; border-radius: 15px; padding: 20px; max-width: 500px; margin: 20px auto; box-shadow: 0 10px 15px rgba(0,0,0,0.3); }
-        .chat-box { height: 250px; background: #0f172a; border-radius: 10px; padding: 10px; overflow-y: auto; margin-bottom: 15px; border: 1px solid #334155; }
+        .chat-box { height: 250px; background: #0f172a; border-radius: 10px; padding: 10px; overflow-y: auto; margin-bottom: 15px; border: 1px solid #334155; display: flex; align-items: center; justify-content: center; }
         input { width: 70%; padding: 12px; border-radius: 8px; border: none; background: #334155; color: white; }
         .btn-main { background: #fbbf24; color: #0f172a; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
         .btn-sub { background: #334155; color: white; border: 1px solid #fbbf24; padding: 8px 15px; border-radius: 20px; margin: 5px; cursor: pointer; }
     </style>
 </head>
 <body>
-    <div id="root"></div>
-    <script type="text/babel">
-        function App() {
-            const [role, setRole] = React.useState('User');
-            return (
-                <div>
-                    <h1>👑 Dody App</h1>
-                    <div className="card">
-                        <p>Role: <span style={{color: '#fbbf24', fontWeight: 'bold'}}>{role}</span></p>
-                        <div className="chat-box"><p style={{color: '#64748b', marginTop: '100px'}}>No messages yet...</p></div>
-                        <input type="text" placeholder="Message..." />
-                        <button className="btn-main">Send</button>
-                    </div>
-                    <div style={{marginTop: '20px'}}>
-                        <button className="btn-sub" onClick={() => setRole('Star 🌟')}>Star</button>
-                        <button className="btn-sub" onClick={() => setRole('VIP ✨')}>VIP</button>
-                    </div>
-                    <p style={{fontSize: '10px', color: '#475569', marginTop: '30px'}}>Verified Property ✅</p>
-                </div>
-            );
+    <div>
+        <h1>👑 Dody App</h1>
+        <div class="card">
+            <p>Role: <span id="role-display" style="color: #fbbf24; font-weight: bold;">User</span></p>
+            <div class="chat-box">
+                <p id="chat-status" style="color: #64748b; margin: 0;">No messages yet...</p>
+            </div>
+            <input type="text" id="msg-input" placeholder="Message..." />
+            <button class="btn-main" onclick="sendMessage()">Send</button>
+        </div>
+        <div style="margin-top: 20px;">
+            <button class="btn-sub" onclick="changeRole('Star 🌟')">Star</button>
+            <button class="btn-sub" onclick="changeRole('VIP ✨')">VIP</button>
+        </div>
+        <p style="font-size: 10px; color: #475569; margin-top: 30px;">Verified Property ✅</p>
+    </div>
+
+    <script>
+        function changeRole(newRole) {
+            document.getElementById('role-display').innerText = newRole;
         }
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+        function sendMessage() {
+            const input = document.getElementById('msg-input');
+            if(input.value.trim() !== "") {
+                document.getElementById('chat-status').innerText = input.value;
+                document.getElementById('chat-status').style.color = "white";
+                input.value = "";
+            }
+        }
     </script>
 </body>
 </html>
