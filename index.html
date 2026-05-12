@@ -4,28 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="sMe9o4ndrTx6bFdakgRATCmT9e8IM5l1mKq9bZbx1xE" />
-    <title>Dody App | Chat & Roles</title>
-    <style>
-        body { background-color: #0f172a; color: white; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
-        .chat-card { background: #1e293b; border-radius: 15px; padding: 20px; max-width: 500px; margin: 20px auto; box-shadow: 0 10px 15px rgba(0,0,0,0.3); }
-        .messages { height: 250px; background: #0f172a; border-radius: 10px; padding: 10px; overflow-y: auto; margin-bottom: 15px; border: 1px solid #334155; color: #64748b; }
-        input { width: 70%; padding: 12px; border-radius: 8px; border: none; background: #334155; color: white; }
-        .btn-gold { background: #fbbf24; color: #0f172a; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        .role-btn { background: #334155; color: white; border: 1px solid #fbbf24; padding: 8px 15px; border-radius: 20px; margin: 5px; cursor: pointer; }
-    </style>
+    <title>Dody App | Official</title>
+    <!-- سنستخدم روابط مباشرة لضمان عدم حدوث شاشة بيضاء -->
+    <script src="https://unpkg.com"></script>
+    <script src="https://unpkg.com"></script>
+    <script src="https://unpkg.com"></script>
 </head>
-<body>
-    <h1>👑 Dody App</h1>
-    <div class="chat-card">
-        <p>Current Role: <span id="role-text" style="color: #fbbf24; font-weight: bold;">User</span></p>
-        <div class="messages" id="chat-box">No new messages...</div>
-        <input type="text" placeholder="Type a message...">
-        <button class="btn-gold">Send</button>
-    </div>
-    <div style="margin-top: 20px;">
-        <button class="role-btn" onclick="document.getElementById('role-text').innerText='Star 🌟'">Star</button>
-        <button class="role-btn" onclick="document.getElementById('role-text').innerText='Influencer ✨'">Influencer</button>
-    </div>
-    <p style="font-size: 10px; color: #475569; margin-top: 30px;">Verified by Google ✅</p>
+<body style="margin: 0; padding: 0;">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // هنا نضع كود تطبيقك الأصلي "دودي" بالكامل
+        function App() {
+            const [role, setRole] = React.useState('User');
+            
+            return (
+                <div style={{ backgroundColor: '#0f172a', color: 'white', minHeight: '100vh', textAlign: 'center', padding: '20px', fontFamily: 'sans-serif' }}>
+                    <header>
+                        <h1 style={{ color: '#fbbf24', fontSize: '2.5rem' }}>👑 Dody App</h1>
+                        <p style={{ color: '#94a3b8' }}>Secure Verified Chat</p>
+                    </header>
+
+                    <main style={{ background: '#1e293b', padding: '20px', borderRadius: '15px', maxWidth: '500px', margin: '20px auto', boxShadow: '0 10px 15px rgba(0,0,0,0.3)' }}>
+                        <p>Current Role: <span style={{ color: '#fbbf24', fontWeight: 'bold' }}>{role}</span></p>
+                        
+                        <div style={{ height: '250px', background: '#0f172a', borderRadius: '10px', padding: '10px', marginBottom: '15px', border: '1px solid #334155' }}>
+                            <p style={{ color: '#64748b', marginTop: '100px' }}>No new messages...</p>
+                        </div>
+
+                        <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+                            <input type="text" placeholder="Type here..." style={{ flex: 1, padding: '10px', borderRadius: '5px', border: 'none' }} />
+                            <button style={{ padding: '10px', background: '#fbbf24', border: 'none', borderRadius: '5px', fontWeight: 'bold' }}>Send</button>
+                        </div>
+
+                        <button onClick={() => setRole('Star 🌟')} style={{ margin: '5px', padding: '10px', borderRadius: '8px', border: 'none', background: '#ec4899', color: 'white', cursor: 'pointer' }}>Star</button>
+                        <button onClick={() => setRole('Influencer ✨')} style={{ margin: '5px', padding: '10px', borderRadius: '8px', border: 'none', background: '#06b6d4', color: 'white', cursor: 'pointer' }}>Influencer</button>
+                    </main>
+
+                    <footer style={{ marginTop: '20px', color: '#475569', fontSize: '0.8rem' }}>
+                        Verified by Google Search Console ✅
+                    </footer>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 </html>
