@@ -4,52 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="sMe9o4ndrTx6bFdakgRATCmT9e8IM5l1mKq9bZbx1xE" />
-    <title>Dody App | Official</title>
-    <!-- سنستخدم روابط مباشرة لضمان عدم حدوث شاشة بيضاء -->
-    <script src="https://unpkg.com"></script>
-    <script src="https://unpkg.com"></script>
-    <script src="https://unpkg.com"></script>
+    <title>Dody App</title>
 </head>
-<body style="margin: 0; padding: 0;">
+<body>
     <div id="root"></div>
-
-    <script type="text/babel">
-        // هنا نضع كود تطبيقك الأصلي "دودي" بالكامل
-        function App() {
-            const [role, setRole] = React.useState('User');
-            
-            return (
-                <div style={{ backgroundColor: '#0f172a', color: 'white', minHeight: '100vh', textAlign: 'center', padding: '20px', fontFamily: 'sans-serif' }}>
-                    <header>
-                        <h1 style={{ color: '#fbbf24', fontSize: '2.5rem' }}>👑 Dody App</h1>
-                        <p style={{ color: '#94a3b8' }}>Secure Verified Chat</p>
-                    </header>
-
-                    <main style={{ background: '#1e293b', padding: '20px', borderRadius: '15px', maxWidth: '500px', margin: '20px auto', boxShadow: '0 10px 15px rgba(0,0,0,0.3)' }}>
-                        <p>Current Role: <span style={{ color: '#fbbf24', fontWeight: 'bold' }}>{role}</span></p>
-                        
-                        <div style={{ height: '250px', background: '#0f172a', borderRadius: '10px', padding: '10px', marginBottom: '15px', border: '1px solid #334155' }}>
-                            <p style={{ color: '#64748b', marginTop: '100px' }}>No new messages...</p>
-                        </div>
-
-                        <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
-                            <input type="text" placeholder="Type here..." style={{ flex: 1, padding: '10px', borderRadius: '5px', border: 'none' }} />
-                            <button style={{ padding: '10px', background: '#fbbf24', border: 'none', borderRadius: '5px', fontWeight: 'bold' }}>Send</button>
-                        </div>
-
-                        <button onClick={() => setRole('Star 🌟')} style={{ margin: '5px', padding: '10px', borderRadius: '8px', border: 'none', background: '#ec4899', color: 'white', cursor: 'pointer' }}>Star</button>
-                        <button onClick={() => setRole('Influencer ✨')} style={{ margin: '5px', padding: '10px', borderRadius: '8px', border: 'none', background: '#06b6d4', color: 'white', cursor: 'pointer' }}>Influencer</button>
-                    </main>
-
-                    <footer style={{ marginTop: '20px', color: '#475569', fontSize: '0.8rem' }}>
-                        Verified by Google Search Console ✅
-                    </footer>
-                </div>
-            );
-        }
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+    <script type="module" src="./main.tsx"></script>
 </body>
 </html>
