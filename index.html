@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYP<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,40 +7,69 @@
     <title>Dody App</title>
     <style>
         body { background-color: #0f172a; color: white; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
-        .card { background: #1e293b; border-radius: 15px; padding: 20px; max-width: 500px; margin: 20px auto; box-shadow: 0 10px 15px rgba(0,0,0,0.3); }
-        .chat-box { height: 250px; background: #0f172a; border-radius: 10px; padding: 10px; overflow-y: auto; margin-bottom: 15px; border: 1px solid #334155; display: flex; align-items: center; justify-content: center; }
-        input { width: 70%; padding: 12px; border-radius: 8px; border: none; background: #334155; color: white; }
-        .btn-main { background: #fbbf24; color: #0f172a; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        .btn-sub { background: #334155; color: white; border: 1px solid #fbbf24; padding: 8px 15px; border-radius: 20px; margin: 5px; cursor: pointer; }
+        .chat-container { max-width: 600px; margin: 20px auto; background-color: #1e293b; border-radius: 15px; padding: 20px; box-shadow: 0 10px 15px rgba(0,0,0,0.3); }
+        .chat-box { height: 300px; background-color: #0f172a; border-radius: 10px; padding: 15px; overflow-y: auto; margin-bottom: 20px; border: 1px solid #334155; text-align: right; }
+        .message-entry { margin-bottom: 12px; padding: 8px; border-radius: 8px; background-color: #1e293b; border-right: 4px solid #fbbf24; }
+        .input-area { display: flex; gap: 10px; }
+        input { flex: 1; padding: 12px; border-radius: 8px; border: none; background-color: #334155; color: white; font-size: 1rem; }
+        .btn-send { background-color: #fbbf24; color: #0f172a; border: none; padding: 10px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .roles-footer { marginTop: 30px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+        .btn-role { border: none; padding: 10px 20px; border-radius: 20px; fontWeight: bold; cursor: pointer; color: white; }
+        .role-display { display: inline-block; padding: 5px 15px; border-radius: 20px; background-color: #334155; margin-top: 10px; }
     </style>
 </head>
 <body>
-    <div>
-        <h1>👑 Dody App</h1>
-        <div class="card">
-            <p>Role: <span id="role-display" style={{color: '#fbbf24', fontWeight: 'bold'}}>User</span></p>
-            <div class="chat-box">
-                <p id="chat-status" style="color: #64748b; margin: 0;">No messages yet...</p>
-            </div>
-            <input type="text" id="msg-input" placeholder="Message..." />
-            <button class="btn-main" onclick="sendMessage()">Send</button>
+    <header>
+        <h1 style="color: #fbbf24; fontSize: 2.2rem; margin: 0;">👑 Dody App 👑</h1>
+        <p style="color: #94a3b8; margin: 5px 0;">Secure Verified Chat Room</p>
+        <div class="role-display">
+            Role: <span id="current-role" style="color: #fbbf24; font-weight: bold;">User</span>
         </div>
-        <div style="margin-top: 20px;">
-            <button class="btn-sub" onclick="changeRole('Star 🌟')">Star</button>
-            <button class="btn-sub" onclick="changeRole('VIP ✨')">VIP</button>
+    </header>
+
+    <main class="chat-container">
+        <div class="chat-box" id="chat-stream">
+            <div style="color: #64748b; text-align: center; margin-top: 120px;" id="empty-notice">No new messages since you joined...</div>
         </div>
-        <p style="font-size: 10px; color: #475569; margin-top: 30px;">Verified Property ✅</p>
-    </div>
+
+        <div class="input-area">
+            <input type="text" id="text-input" placeholder="Type your message here..." />
+            <button class="btn-send" onclick="handleSend()">Send</button>
+        </div>
+    </main>
+
+    <footer class="roles-footer">
+        <button class="btn-role" onclick="updateRole('Star 🌟', '#ec4899')" style="background-color: #ec4899;">Star</button>
+        <button class="btn-role" onclick="updateRole('Influencer ✨', '#06b6d4')" style="background-color: #06b6d4;">Influencer</button>
+        <button class="btn-role" onclick="updateRole('Admin 🛡️', '#ef4444')" style="background-color: #ef4444;">Admin</button>
+    </footer>
+    
+    <p style="margin-top: 40px; font-size: 0.8rem; color: #475569;">Verified by Google Search Console ✅</p>
 
     <script>
-        function changeRole(newRole) {
-            document.getElementById('role-display').innerText = newRole;
+        let currentRoleName = "User";
+
+        function updateRole(roleName, color) {
+            currentRoleName = roleName;
+            const display = document.getElementById('current-role');
+            display.innerText = roleName;
+            display.style.color = color;
         }
-        function sendMessage() {
-            const input = document.getElementById('msg-input');
-            if(input.value.trim() !== "") {
-                document.getElementById('chat-status').innerText = input.value;
-                document.getElementById('chat-status').style.color = "white";
+
+        function handleSend() {
+            const input = document.getElementById('text-input');
+            const stream = document.getElementById('chat-stream');
+            const notice = document.getElementById('empty-notice');
+            
+            if (input.value.trim() !== "") {
+                if (notice) notice.remove();
+                
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'message-entry';
+                msgDiv.innerHTML = `<span style="color: #fbbf24; font-weight: bold;">[${currentRoleName}] You: </span><span style="color: white;">${input.value}</span>`;
+                
+                stream.appendChild(msgDiv);
+                stream.scrollTop = stream.scrollHeight;
                 input.value = "";
             }
         }
