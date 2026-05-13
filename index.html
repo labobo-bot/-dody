@@ -1,2 +1,84 @@
-<meta http-equiv="refresh" content="0; url=run.app">
-<meta name="google-site-verification" content="sMe9o4ndrTx6bFdakgRATCmT9e8IM5l1mKq9bZbx1xE" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="sMe9o4ndrTx6bFdakgRATCmT9e8IM5l1mKq9bZbx1xE" />
+    <title>Dody App</title>
+    <script src="unpkg.com"></script>
+    <script src="unpkg.com"></script>
+    <script src="unpkg.com"></script>
+    <style>
+        body { background-color: #0f172a; color: white; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
+        .chat-container { max-width: 600px; margin: 20px auto; background-color: #1e293b; border-radius: 15px; padding: 20px; box-shadow: 0 10px 15px rgba(0,0,0,0.3); }
+        .chat-box { height: 300px; background-color: #0f172a; border-radius: 10px; padding: 15px; overflow-y: auto; margin-bottom: 20px; border: 1px solid #334155; text-align: right; }
+        .message-entry { margin-bottom: 12px; padding: 8px; border-radius: 8px; background-color: #1e293b; border-right: 4px solid #fbbf24; }
+        .input-area { display: flex; gap: 10px; }
+        input { flex: 1; padding: 12px; border-radius: 8px; border: none; background-color: #334155; color: white; font-size: 1rem; }
+        .btn-send { background-color: #fbbf24; color: #0f172a; border: none; padding: 10px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .roles-footer { margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .btn-role { border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; color: white; }
+        .role-display { display: inline-block; padding: 5px 15px; border-radius: 20px; background-color: #334155; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function App() {
+            const [role, setRole] = React.useState('User');
+            const [messages, setMessages] = React.useState([]);
+            const [input, setInput] = React.useState('');
+
+            const handleSend = () => {
+                if (input.trim() !== '') {
+                    const newMsg = { id: Date.now(), text: input, userRole: role };
+                    setMessages([...messages, newMsg]);
+                    setInput('');
+                }
+            };
+
+            return (
+                <div>
+                    <header>
+                        <h1 style={{color: '#fbbf24', fontSize: '2.2rem', margin: 0}}>👑 Dody App 👑</h1>
+                        <p style={{color: '#94a3b8', margin: '5px 0'}}>Secure Verified Chat Room</p>
+                        <div className="role-display">
+                            Role: <span style={{color: '#fbbf24', fontWeight: 'bold'}}>{role}</span>
+                        </div>
+                    </header>
+
+                    <main className="chat-container">
+                        <div className="chat-box">
+                            {messages.length === 0 ? (
+                                <div style={{color: '#64748b', textAlign: 'center', marginTop: '120px'}}>No new messages since you joined...</div>
+                            ) : (
+                                messages.map(msg => (
+                                    <div key={msg.id} className="message-entry">
+                                        <span style={{color: '#fbbf24', fontWeight: 'bold'}}>[{msg.userRole}] You: </span>
+                                        <span style={{color: 'white'}}>{msg.text}</span>
+                                    </div>
+                                ))
+                            )}
+                        </div>
+
+                        <div className="input-area">
+                            <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type your message here..." />
+                            <button className="btn-send" onClick={handleSend}>Send</button>
+                        </div>
+                    </main>
+
+                    <footer className="roles-footer">
+                        <button className="btn-role" onClick={() => setRole('Star 🌟')} style={{backgroundColor: '#ec4899'}}>Star</button>
+                        <button className="btn-role" onClick={() => setRole('VIP ✨')} style={{backgroundColor: '#06b6d4'}}>VIP</button>
+                        <button className="btn-role" onClick={() => setRole('Admin 🛡️')} style={{backgroundColor: '#ef4444'}}>Admin</button>
+                    </footer>
+                    
+                    <p style={{marginTop: '40px', fontSize: '0.8rem', color: '#475569'}}>Verified Property ✅</p>
+                </div>
+            );
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
