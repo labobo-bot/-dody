@@ -1,45 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- كود توثيق ملكية جوجل الجديد المحدث -->
+    <meta name="google-site-verification" content="BwY1Cp_orTKV8ToG2oCUdav6gFQweE5SPBSsaxl6kd0" />
+    
+    <!-- معلومات الموقع المعدلة - SEO -->
     <title>تطبيق دودي - الدردشة العربية</title>
-    <meta name="description" content="تطبيق دودي للدردشة الذكية، رفيقك في الحوار والذكاء الاصطناعي">
-    <link rel="icon" type="image/png" href="https://i.ibb.co/Lzn4PZk/image-5.png">
+    <meta name="description" content="تطبيق دودي للدردشة الذكية، رفيقك في الحوار والذكاء الاصطناعي وغرف الدردشة العربية الممتعة." />
+    <meta name="keywords" content="دودي, dody, شات, دردشة, دردشة عربية, شات دودي" />
+    <meta name="author" content="Dody Developer" />
+    <link rel="canonical" href="./" />
     
-    <!-- كود توثيق ملكية جوجل الجديد -->
-    <meta name="google-site-verification" content="BwY1Cp_orTKV8ToG2oCUdav6gFQweE5SPBSsaxl6kd0">
-    
-    <!-- كود إعادة التوجيه التلقائي إلى رابط الاستضافة الخاص بك -->
-    <meta http-equiv="refresh" content="0; url=https://hostingapp.io">
-    
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #0f172a;
-            font-family: Arial, sans-serif;
-            color: white;
-        }
-        .loader {
-            border: 4px solid #1e293b;
-            border-top: 4px solid #fbbf24;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
-</head>
-<body>
-    <!-- دائرة التحميل التي تظهر للمستخدم قبل الانتقال للتطبيق -->
-    <div class="loader"></div>
-</body>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="./" />
+    <meta property="og:title" content="تطبيق دودي - الدردشة العربية" />
+    <meta property="og:description" content="المنصة الرسمية لتطبيق دودي وغرف الدردشة العربية." />
+    <meta property="og:image" content="./og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="./" />
+    <meta property="twitter:title" content="تطبيق دودي - الدردشة العربية" />
+    <meta property="twitter:description" content="دردشة دودي العربية الرسمية." />
+    <meta property="twitter:image" content="./og-image.png" />
+
+    <!-- أيقونة التطبيق -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://w3.org viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
